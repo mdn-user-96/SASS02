@@ -1,0 +1,55 @@
+@mixin article-mixin($color, $border-color, $font-size:1rem, $border: 1px solid) {
+    color: $color;
+    border: $border;
+    border-color: $border-color;
+    font-size: $font-size;
+}
+
+@mixin layout-article-content($center:center) {
+    display: flex;
+    justify-content: $center;
+    align-items: $center;
+    padding: 30px;
+}
+
+section:nth-child(2) {
+    display: flex;
+    article:nth-child(1),
+    article:nth-child(3) {
+        @include article-mixin(blue, green);
+        @include layout-article-content;
+    }
+    article:nth-child(2),
+    article:nth-child(4) {
+        @include article-mixin(red, green);
+        @include layout-article-content;
+    }
+}
+
+section:nth-child(3) {
+    article {
+        @include article-mixin(green, blue, $font-size: 24px);
+        @include layout-article-content;
+    }
+}
+
+
+/*qua non ho utilizato variabili perchè mi sembrava forzato*/
+
+div {
+    border: 1px solid;
+    border-color: red;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    padding: 30px;
+}
+
+h1 {
+    color: green;
+    text-decoration: underline;
+    text-decoration-color: blue;
+    text-decoration-thickness: 1px;
+    text-align: center;
+    margin: 0px;
+}
